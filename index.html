@@ -1,26 +1,284 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria absolvenților</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-        }
-        h1 {
-            color: #1a73e8;
-            font-size: 3rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria Absolvenților — Liceul Teoretic „Ana Ipătescu" Gherla</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary: #6b3fa0;
+  --primary-light: #f3eef9;
+  --primary-mid: #8b5fc4;
+  --secondary: #8b1a4a;
+  --secondary-light: #f9eef3;
+  --accent: #1a6b5c;
+  --accent-light: #e8f5f0;
+  --gold: #8a6500;
+  --gold-light: #fdf8e3;
+  --dark: #1a1020;
+  --text: #251a30;
+  --muted: #7a6a8a;
+  --border: #e8ddf0;
+  --bg: #fdfafc;
+  --white: #ffffff;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 16px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+.hero{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;text-align:center}
+.logo{width:120px;height:120px;border-radius:24px;margin-bottom:32px;object-fit:contain;box-shadow:0 4px 24px rgba(107,63,160,0.15)}
+.logo-fallback{display:none;align-items:center;justify-content:center;width:120px;height:120px;border-radius:24px;margin-bottom:32px;background:linear-gradient(135deg,var(--primary),var(--primary-mid));font-family:var(--serif);font-size:2.2rem;color:white}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3rem);margin-bottom:12px;color:var(--dark)}
+.hero h1 em{font-style:italic;color:var(--primary-mid)}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:600px;margin-bottom:24px}
+.notice{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--gold-light);color:var(--gold);border-radius:50px;font-size:0.9rem;font-weight:500;margin-bottom:32px}
+
+.gallery-section{width:100%;max-width:1200px;margin:0 auto;padding:0 24px 80px}
+.gallery-title{font-family:var(--serif);font-size:1.4rem;text-align:center;margin-bottom:16px;color:var(--dark)}
+.gallery-sub{text-align:center;color:var(--muted);font-size:0.9rem;margin-bottom:40px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.gallery-item{background:var(--white);border:2px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all 0.3s;text-decoration:none}
+.gallery-item:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(107,63,160,0.15);border-color:var(--primary-mid)}
+.gallery-img{width:100%;height:200px;object-fit:cover;background:var(--primary-light);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:3rem}
+.gallery-item:hover .gallery-img{opacity:0.9}
+.gallery-info{padding:14px 16px}
+.gallery-name{font-size:0.9rem;font-weight:600;color:var(--text);word-break:break-word}
+.gallery-year{font-size:0.8rem;color:var(--muted);margin-top:4px}
+
+footer{padding:40px 24px;text-align:center;color:var(--muted)}
+footer p{font-size:0.85rem}
+footer strong{color:var(--text)}}
+
+@media(max-width:700px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{min-height:auto;padding:60px 20px 30px}
+  .logo{width:100px;height:100px}
+}
+@media(max-width:450px){
+  .gallery-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-    <h1>Hello World!</h1>
+
+<div class="hero">
+  <img src="logo.png" alt="Logo Liceul Teoretic Ana Ipătescu" class="logo" onerror="this.style.display='none';document.getElementById('logo-fb').style.display='flex'">
+  <div id="logo-fb" class="logo-fallback" style="display:none">AI</div>
+  <h1>Galeria <em>Absolvenților</em></h1>
+  <p class="hero-sub">Promoțiile Liceului Teoretic „Ana Ipătescu" Gherla de-a lungul anilor.</p>
+  <div class="notice"><i class="fas fa-tools"></i> Site în lucru — galerie în curs de actualizare</div>
+</div>
+
+<div class="gallery-section">
+  <h2 class="gallery-title">Promoții în Arhivă</h2>
+  <p class="gallery-sub">Toate pozele sunt disponibile în arhiva de pe <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" target="_blank" style="color:var(--primary);text-decoration:underline">Google Drive</a></p>
+  <div class="gallery-grid">
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12A 1995</div>
+        <div class="gallery-year">Clasa a XII-a A</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12A, 2024-2025 Cioabă</div>
+        <div class="gallery-year">Clasa a XII-a A</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12A 1993</div>
+        <div class="gallery-year">Clasa a XII-a A</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12A 1995</div>
+        <div class="gallery-year">Clasa a XII-a A</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12A 2023</div>
+        <div class="gallery-year">Clasa a XII-a A</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12B 2024, Ielcean C.</div>
+        <div class="gallery-year">Clasa a XII-a B</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12B, 2022, Balint A</div>
+        <div class="gallery-year">Clasa a XII-a B</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12B 2018</div>
+        <div class="gallery-year">Clasa a XII-a B</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12C 2005</div>
+        <div class="gallery-year">Clasa a XII-a C</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12C 2007</div>
+        <div class="gallery-year">Clasa a XII-a C</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12C 2011</div>
+        <div class="gallery-year">Clasa a XII-a C</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12 2003</div>
+        <div class="gallery-year">Clasa a XII-a</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">12 2016</div>
+        <div class="gallery-year">Clasa a XII-a</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">2005 12</div>
+        <div class="gallery-year">Clasa a XII-a</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Promoția 2003</div>
+        <div class="gallery-year">Clasa a XII-a</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Clasa a XII-a 2005</div>
+        <div class="gallery-year">Promoția 2005</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Clasa a XII-a A 2018</div>
+        <div class="gallery-year">Promoția 2018</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Clasa a XII-a B 2018</div>
+        <div class="gallery-year">Promoția 2018</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Clasa a XII-a B 2019</div>
+        <div class="gallery-year">Promoția 2019</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Clasa a XII-a C 2018</div>
+        <div class="gallery-year">Promoția 2018</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Clasa a XII-a C 2019</div>
+        <div class="gallery-year">Promoția 2019</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">PROF 12A 1995</div>
+        <div class="gallery-year">Profesori și elevi</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Promoția 1949</div>
+        <div class="gallery-year">Promoția 1949</div>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1l4fICEhfS1KunMc25LqscrCrmV7hjwW9/view?usp=sharing" class="gallery-item" target="_blank">
+      <div class="gallery-img"><i class="fas fa-image"></i></div>
+      <div class="gallery-info">
+        <div class="gallery-name">Promoția 1951</div>
+        <div class="gallery-year">Promoția 1951</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <p><strong>Liceul Teoretic „Ana Ipătescu"</strong> · Gherla, Cluj</p>
+  <p style="margin-top:4px">© 2026 · Toate drepturile rezervate</p>
+</footer>
+
 </body>
 </html>
